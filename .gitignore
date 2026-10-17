@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+database/HEALIX.db
+database/HEALIX.db-shm
+database/HEALIX.db-wal
+npm-debug.log*

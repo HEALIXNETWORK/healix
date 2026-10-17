@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#102c35">
+    <meta name="description" content="A thoughtful health information assistant for everyday questions.">
+    <title>HEALIX AI — Health, with clarity</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div id="auth-view" class="auth-view">
+      <header class="auth-brand">
+        <a class="brand" href="/" aria-label="HEALIX AI home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M17 6h6v11h11v6H23v11h-6V23H6v-6h11z"/></svg></span>
+          <span>HEALIX <b>AI</b></span>
+        </a>
+      </header>
+      <main class="auth-layout">
+        <section class="welcome-copy">
+          <div class="eyebrow"><span class="status-dot"></span> A calmer way to explore health</div>
+          <h1>Health questions<br>deserve <em>clear answers.</em></h1>
+          <p>A thoughtful space to learn about your health, keep small routines, and prepare for conversations with your care team.</p>
+          <div class="welcome-note"><span class="note-icon">✳</span><span>Private by design. Your account keeps its own conversations and records.</span></div>
+          <div class="disclaimer-card"><strong>A note on care</strong><p>HEALIX AI offers general information, not diagnosis or treatment. For urgent or personal medical concerns, contact a qualified professional.</p></div>
+        </section>
+        <section class="auth-card" aria-labelledby="auth-title">
+          <div class="auth-card-icon" aria-hidden="true">✚</div>
+          <p class="eyebrow" id="auth-eyebrow">YOUR PERSONAL HEALTH SPACE</p>
+          <h2 id="auth-title">Welcome to HEALIX</h2>
+          <p id="auth-subtitle" class="muted">Sign in to continue to your health space.</p>
+          <form id="auth-form">
+            <label id="name-field" class="form-field is-hidden">Your name<input id="auth-name" name="name" autocomplete="name" maxlength="80"></label>
+            <label class="form-field">Email address<input id="auth-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+            <label class="form-field">Password<input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="12" maxlength="128" placeholder="At least 12 characters"></label>
+            <p id="auth-error" class="form-error" role="alert"></p>
+            <button id="auth-submit" class="button button-primary button-wide" type="submit">Sign in <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-switch"><span id="auth-switch-text">New to HEALIX?</span> <button id="auth-switch" class="text-button" type="button">Create an account</button></p>
+          <p class="auth-privacy">By continuing, you agree to use HEALIX as a health information tool, not a substitute for professional care.</p>
+        </section>
+      </main>
+      <footer class="auth-footer"><span>HEALIX AI</span><span>Thoughtful technology. Human care.</span></footer>
+    </div>
+
+    <div id="app-view" class="app-view is-hidden">
+      <aside class="sidebar">
+        <a class="brand" href="#" data-nav="dashboard" aria-label="HEALIX AI dashboard">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M17 6h6v11h11v6H23v11h-6V23H6v-6h11z"/></svg></span>
+          <span>HEALIX <b>AI</b></span>
+        </a>
+        <div class="sidebar-label">YOUR SPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-nav="dashboard"><span class="nav-icon">⌂</span>Overview</button>
+          <button class="nav-item" data-nav="assistant"><span class="nav-icon">✳</span>AI assistant<span class="nav-badge">AI</span></button>
+          <button class="nav-item" data-nav="hydration"><span class="nav-icon">◉</span>Hydration</button>
+          <button class="nav-item" data-nav="appointments"><span class="nav-icon">▦</span>Appointments</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-care"><span>✦</span><p><b>Small steps count.</b><br>Your health journey is yours.</p></div>
+          <button class="profile-shortcut" data-nav="profile">
+            <span id="sidebar-avatar" class="avatar">H</span><span class="profile-shortcut-copy"><b id="sidebar-name">Your profile</b><small>Account & settings</small></span><span aria-hidden="true">›</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M17 6h6v11h11v6H23v11h-6V23H6v-6h11z"/></svg></span><span>HEALIX <b>AI</b></span></div>
+          <div class="topbar-caption"><span class="secure-label"><span class="status-dot"></span> Your private health space</span></div>
+          <button id="logout-button" class="button button-quiet" type="button">Sign out <span aria-hidden="true">↗</span></button>
+        </header>
+
+        <section id="screen-dashboard" class="screen active" aria-labelledby="dashboard-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">YOUR HEALTH, AT YOUR PACE</p><h1 id="dashboard-title">Good to see you, <span id="welcome-name">there</span><span class="heading-period">.</span></h1><p class="muted">A little clarity can make a big difference.</p></div>
+            <div class="date-chip"><span aria-hidden="true">◷</span><span id="today-label"></span></div>
+          </div>
+          <div class="dashboard-grid">
+            <article class="hero-card">
+              <div class="hero-copy"><div class="eyebrow light-eyebrow"><span class="hero-sparkle">✳</span> HERE WHEN YOU NEED IT</div><h2>Let's make sense<br>of your health.</h2><p>Ask a question, talk through a concern, or learn about a health topic.</p><button class="button button-light" data-nav="assistant">Talk to HEALIX AI <span aria-hidden="true">→</span></button></div>
+              <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-cross" aria-hidden="true">✚</div>
+              <div class="hero-caption"><span class="hero-caption-dot"></span> Supportive information, never a diagnosis</div>
+            </article>
+            <article class="panel hydration-panel">
+              <div class="panel-heading"><div><p class="eyebrow">DAILY CHECK-IN</p><h3>Hydration</h3></div><span class="water-icon">◉</span></div>
+              <div class="hydration-summary"><strong id="dashboard-water">0</strong><span>ml logged today</span></div>
+              <progress class="progress-track" id="dashboard-water-progress" max="100" value="0" aria-label="Hydration goal progress"></progress>
+              <p id="dashboard-goal-label" class="small-muted">Set a personal goal in settings, if useful.</p>
+              <button class="button button-outline button-small" data-nav="hydration">View hydration <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="panel appointment-panel">
+              <div class="panel-heading"><div><p class="eyebrow">PLAN AHEAD</p><h3>Appointments</h3></div><span class="calendar-icon">▦</span></div>
+              <div id="dashboard-appointments" class="dashboard-appointments"></div>
+              <button class="button button-outline button-small" data-nav="appointments">Manage appointments <span aria-hidden="true">→</span></button>
+            </article>
+            <article class="panel calm-panel">
+              <div class="calm-art" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div><p class="eyebrow">A MOMENT FOR YOU</p><h3>Take a slow breath.</h3><p class="small-muted">A brief guided breathing pause, whenever you need it.</p><button id="breathing-button" class="text-button">Start a breathing pause <span aria-hidden="true">→</span></button><p id="breathing-status" class="breathing-status" aria-live="polite"></p></div>
+            </article>
+          </div>
+          <div class="disclaimer-inline"><span aria-hidden="true">ⓘ</span> HEALIX AI provides general health information and does not replace professional medical advice.</div>
+        </section>
+
+        <section id="screen-assistant" class="screen" aria-labelledby="assistant-title">
+          <div class="page-heading compact-heading"><div><p class="eyebrow">GENERAL HEALTH INFORMATION</p><h1 id="assistant-title">Your AI assistant</h1><p class="muted">A thoughtful starting point for your health questions.</p></div><button id="new-conversation" class="button button-primary" type="button"><span aria-hidden="true">＋</span> New conversation</button></div>
+          <div id="ai-config-notice" class="notice notice-warn is-hidden" role="status"></div>
+          <div class="chat-layout">
+            <aside class="conversation-panel">
+              <div class="conversation-heading"><span>RECENT CONVERSATIONS</span><button id="refresh-conversations" class="icon-button" type="button" aria-label="Refresh conversations">↻</button></div>
+              <div id="conversation-list" class="conversation-list"></div>
+              <div class="conversation-private"><span>◇</span> Your conversations are private to your account.</div>
+            </aside>
+            <div class="chat-panel">
+              <div id="chat-empty" class="chat-empty"><div class="chat-empty-icon">✳</div><h2>What would you like to understand?</h2><p>Share a question or a health topic. HEALIX may ask follow-up questions to give more useful general information.</p><div class="suggestion-row"><button class="suggestion" type="button">Help me prepare for a doctor visit</button><button class="suggestion" type="button">Explain a health topic</button></div></div>
+              <div id="message-list" class="message-list" aria-live="polite"></div>
+              <div id="chat-error" class="chat-error is-hidden" role="alert"><span id="chat-error-text"></span><button id="retry-message" class="text-button" type="button">Retry</button></div>
+              <div id="typing-indicator" class="typing-indicator is-hidden"><span></span><span></span><span></span><small>HEALIX is thinking</small></div>
+              <form id="chat-form" class="chat-composer">
+                <label for="chat-input" class="visually-hidden">Write your health question</label>
+                <textarea id="chat-input" rows="1" maxlength="12000" placeholder="Ask a health question..." required></textarea>
+                <div class="composer-actions"><div><button id="voice-button" class="icon-button voice-button" type="button" aria-label="Use voice input" title="Use voice input">♩</button><span id="voice-status" class="voice-status" aria-live="polite"></span></div><span class="composer-disclaimer">General information only</span><button id="send-message" class="send-button" type="submit" aria-label="Send message">↑</button></div>
+              </form>
+              <div class="chat-footnote"><label class="ai-consent"><input id="ai-consent" type="checkbox"> I understand messages are sent to the configured AI provider to generate replies. I will avoid sharing identifying details.</label><span>For emergencies, contact local emergency services. HEALIX AI is not a medical professional.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="screen-hydration" class="screen" aria-labelledby="hydration-title">
+          <div class="page-heading"><div><p class="eyebrow">A GENTLE DAILY CHECK-IN</p><h1 id="hydration-title">Hydration</h1><p class="muted">Keep track of water you choose to log. Your needs can vary.</p></div><span class="large-water-icon">◉</span></div>
+          <div class="hydration-layout">
+            <article class="panel hydration-today-panel"><p class="eyebrow">TODAY'S LOG</p><div class="hydration-total"><strong id="hydration-total">0</strong><span>ml</span></div><p id="hydration-progress-copy" class="muted">Add a personal target in your settings to see progress.</p><progress class="progress-track progress-large" id="hydration-progress" max="100" value="0" aria-label="Hydration goal progress"></progress><form id="hydration-form" class="inline-form"><label for="water-amount">Amount in ml</label><div><input id="water-amount" type="number" min="1" max="5000" step="50" value="250" required><button class="button button-primary" type="submit">Log water <span aria-hidden="true">＋</span></button></div></form></article>
+            <article class="panel hydration-history-panel"><div class="panel-heading"><div><p class="eyebrow">YOUR RECORDS</p><h3>Today's entries</h3></div><span class="water-icon">◌</span></div><div id="hydration-records" class="record-list"></div></article>
+          </div>
+          <p class="disclaimer-inline"><span aria-hidden="true">ⓘ</span> Hydration needs differ by person and circumstance. A personal goal is optional and is not a medical recommendation.</p>
+        </section>
+
+        <section id="screen-appointments" class="screen" aria-labelledby="appointments-title">
+          <div class="page-heading"><div><p class="eyebrow">KEEP WHAT MATTERS IN VIEW</p><h1 id="appointments-title">Appointments</h1><p class="muted">A private place to keep track of upcoming care.</p></div><button id="add-appointment" class="button button-primary" type="button"><span aria-hidden="true">＋</span> Add appointment</button></div>
+          <div id="appointments-list" class="appointments-grid"></div>
+          <p class="disclaimer-inline"><span aria-hidden="true">◇</span> Appointment details are private to your account and are not shared with care providers.</p>
+        </section>
+
+        <section id="screen-profile" class="screen" aria-labelledby="profile-title">
+          <div class="page-heading"><div><p class="eyebrow">YOUR ACCOUNT, YOUR CHOICES</p><h1 id="profile-title">Profile & settings</h1><p class="muted">Review your account details and preferences.</p></div><span id="profile-avatar" class="avatar avatar-large">H</span></div>
+          <div class="settings-grid">
+            <article class="panel settings-panel"><p class="eyebrow">PROFILE</p><h3>Your information</h3><form id="profile-form"><label class="form-field">Name<input id="profile-name" required minlength="2" maxlength="80"></label><label class="form-field">Email address<input id="profile-email" type="email" readonly></label><p id="profile-feedback" class="form-feedback" aria-live="polite"></p><button class="button button-primary" type="submit">Save changes</button></form></article>
+            <article class="panel settings-panel"><p class="eyebrow">PREFERENCES</p><h3>Make HEALIX yours</h3><form id="settings-form"><label class="form-field">Optional hydration goal (ml)<input id="setting-hydration-goal" type="number" min="0" max="10000" step="100"><small>Set to 0 to leave the goal unset. This is a personal tracking preference, not medical guidance.</small></label><label class="toggle-row"><span><b>Read AI replies aloud</b><small>Uses your browser's speech synthesis when available.</small></span><input id="setting-speech" type="checkbox"></label><p id="settings-feedback" class="form-feedback" aria-live="polite"></p><button class="button button-primary" type="submit">Save preferences</button></form></article>
+            <article class="panel settings-panel privacy-panel"><p class="eyebrow">PRIVACY & CARE</p><h3>Clear about your care</h3><p>Your conversations, hydration entries, and appointments are associated with your account and stored in this app's HEALIX database. Messages you send are shared with the configured AI provider to produce a reply. Avoid names, contact details, or other identifying information in health questions.</p><p>HEALIX AI is for general health education. It cannot examine you, diagnose conditions, or replace a qualified health professional. Do not delay urgent care while using this app.</p><div class="data-actions"><button id="export-data" class="button button-outline" type="button">Download my data</button><button id="delete-account" class="button button-danger" type="button">Delete my account and data</button></div></article>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-nav" aria-label="Mobile navigation"><button class="mobile-nav-item active" data-nav="dashboard"><span>⌂</span>Home</button><button class="mobile-nav-item" data-nav="assistant"><span>✳</span>Ask AI</button><button class="mobile-nav-item" data-nav="hydration"><span>◉</span>Water</button><button class="mobile-nav-item" data-nav="appointments"><span>▦</span>Visits</button><button class="mobile-nav-item" data-nav="profile"><span>○</span>Profile</button></nav>
+    </div>
+
+    <dialog id="appointment-dialog" class="appointment-dialog">
+      <form id="appointment-form" method="dialog">
+        <div class="dialog-heading"><div><p class="eyebrow">YOUR CARE CALENDAR</p><h2 id="appointment-dialog-title">Add appointment</h2></div><button id="close-appointment" class="icon-button" type="button" aria-label="Close">×</button></div>
+        <label class="form-field">Appointment title<input id="appointment-title" required maxlength="120" placeholder="e.g. Annual check-up"></label>
+        <label class="form-field">Date and time<input id="appointment-date" type="datetime-local" required></label>
+        <label class="form-field">Notes <span class="optional-label">Optional</span><textarea id="appointment-notes" rows="3" maxlength="2000" placeholder="Anything you want to remember"></textarea></label>
+        <p id="appointment-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions"><button id="cancel-appointment" class="button button-quiet" type="button">Cancel</button><button id="save-appointment" class="button button-primary" type="submit">Save appointment</button></div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

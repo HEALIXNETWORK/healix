@@ -9,10 +9,12 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "role": "node scripts/grant-role.js",
+    "db:init": "node -e \"require('./src/db').db.close();console.log('HEALIX database ready at database/HEALIX.db')\""
   },
   "dependencies": {
-    "better-sqlite3": "^11.8.1",
+    "better-sqlite3": "^12.11.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
   }

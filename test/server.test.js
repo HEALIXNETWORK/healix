@@ -7,6 +7,8 @@ const assert = require('node:assert/strict');
 const testDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'healix-test-'));
 process.env.NODE_ENV = 'test';
 process.env.HEALIX_DATABASE_PATH = path.join(testDirectory, 'HEALIX-test.db');
+process.env.HEALIX_UPLOAD_PATH = path.join(testDirectory, 'uploads');
+process.env.AUTH_RATE_LIMIT_MAX = '1000';
 process.env.SESSION_COOKIE_SECURE = 'false';
 
 const { app } = require('../src/server');
@@ -39,7 +41,7 @@ async function register(name, email) {
     body: JSON.stringify({ name, email, password: 'correct horse battery' })
   });
   assert.equal(response.status, 201);
-  const cookie = response.headers.get('set-cookie').match(/healix_session=([^;]+)/)[1];
+  const cookie = response.headers.get('set-cookie').match(/healix_session=[^;]+/)[0];
   return { cookie, data: await response.json() };
 }
 

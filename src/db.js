@@ -6,7 +6,12 @@ const databasePath = process.env.NODE_ENV === 'test' && process.env.HEALIX_DATAB
   ? path.resolve(process.env.HEALIX_DATABASE_PATH)
   : path.join(__dirname, '..', 'database', 'HEALIX.db');
 const migrationsPath = path.join(__dirname, '..', 'database', 'migrations');
+// Attachment bytes live on disk outside the public folder; the database stores metadata and storage keys only.
+const uploadsPath = process.env.NODE_ENV === 'test' && process.env.HEALIX_UPLOAD_PATH
+  ? path.resolve(process.env.HEALIX_UPLOAD_PATH)
+  : path.join(__dirname, '..', 'database', 'uploads');
 fs.mkdirSync(path.dirname(databasePath), { recursive: true });
+fs.mkdirSync(uploadsPath, { recursive: true });
 
 const db = new Database(databasePath);
 db.pragma('foreign_keys = ON');
@@ -29,4 +34,4 @@ for (const name of fs.readdirSync(migrationsPath).filter((file) => file.endsWith
   })();
 }
 
-module.exports = { db, databasePath };
+module.exports = { db, databasePath, uploadsPath };
